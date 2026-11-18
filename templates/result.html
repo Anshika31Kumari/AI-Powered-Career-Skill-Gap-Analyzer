@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Analysis Report</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <h1>Resume Analysis Report</h1>
+        <p class="subtitle">Your Career & Skill Gap Analysis</p>
+
+        <div class="percentage-card">
+            <h2>Resume Match Score</h2>
+            <h3>{{ match_percentage }}%</h3>
+        </div>
+
+        <div class="report-grid">
+
+            <div class="report-card">
+                <h2>Skills Found</h2>
+                <p>{{ resume_skills | join(', ') }}</p>
+            </div>
+
+            <div class="report-card">
+                <h2>Matched Skills</h2>
+                <p>{{ matched_skills | join(', ') }}</p>
+            </div>
+
+            <div class="report-card">
+                <h2>Missing Skills</h2>
+                <p>{{ missing_skills | join(', ') }}</p>
+            </div>
+
+        </div>
+
+        <div class="recommendation-card">
+            <h2>Learning Recommendations</h2>
+
+            {% if learning_recommendations %}
+                {% for skill, suggestion in learning_recommendations.items() %}
+                    <p><b>{{ skill }}:</b> {{ suggestion }}</p>
+                {% endfor %}
+            {% else %}
+                <p>Congratulations! No skill gaps found.</p>
+            {% endif %}
+        </div>
+
+        <a href="/" class="back-button">Analyze Another Resume</a>
+
+    </div>
+
+</body>
+</html>

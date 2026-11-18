@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career & Skill Gap Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>AI-Powered Career & Skill Gap Analyzer</h1>
+
+    <p>Upload your resume to analyze your skills and identify skill gaps.</p>
+
+    <h2>Upload Your Resume</h2>
+
+    <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+        <!-- Resume Upload -->
+        <label for="resume">Upload Your Resume (PDF):</label>
+
+        <br><br>
+
+        <input type="file" name="resume" id="resume" accept=".pdf" required>
+
+        <br><br>
+
+        <!-- Job Description Input -->
+        <label for="job_description">
+            Paste Job Description:
+        </label>
+
+        <br><br>
+
+        <textarea
+            name="job_description"
+            id="job_description"
+            rows="8"
+            placeholder="Paste the job description here..."
+            required
+        ></textarea>
+
+        <br><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Analyze Resume</button>
+
+    </form>
+
+</body>
+</html>
